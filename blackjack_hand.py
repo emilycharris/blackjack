@@ -39,13 +39,17 @@ class Hand:
         self.value += self.total_value
         return self.total_value
 
+
     def card_values(self):
         if self.face[0] in ['1', 'J', 'Q', 'K']:
             self.value = 10
         elif self.face[0] in ['2', '3', '4', '5', '6', '7', '8', '9']:
             self.value = int(self.face[0])
         elif self.face[0] == 'A':
-            self.value = 11
+            if self.total_value <= 10:
+                self.value = 11
+            else:
+                self.value = 1
         return self.value
 
 
