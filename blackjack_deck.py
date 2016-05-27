@@ -10,4 +10,4 @@ class Deck:
         random.shuffle(self.cards)
 
 game_deck = Deck()
-print(game_deck.cards)
+#print(game_deck.cards)
