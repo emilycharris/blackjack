@@ -20,8 +20,8 @@ class Hand:
         self.card_value = self.card_values()
         self.card_list.append(self.card)
         self.card_list_values.append(self.card_value)
-        self.total_value = sum(self.card_list_values)
         self.revalue_aces()
+        self.total_value = sum(self.card_list_values)
         print("You were dealt the following: ", self.card_list)
         print(self.card_list_values)
         print("The value of your hand is now ", self.total_value)
@@ -52,6 +52,7 @@ class Hand:
                     self.card_list_values[self.i] = 11
                 else:
                     self.card_list_values[self.i] = 1
+        return self.card_list_values
 
 
 
