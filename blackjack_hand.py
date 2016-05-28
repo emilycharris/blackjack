@@ -8,8 +8,11 @@ class Hand:
         self.card_list_values_no_aces = []
 
     def new_hand(self):
-        while len(self.card_list) < 2:
             self.hit()
+            self.hit()
+            print("Your hand is as follows: ", hand.card_list)
+            print(hand.card_list_values)
+            #print("The value of your hand is now ", hand.total_value)
 
     def deal_card(self):
         self.face = game_deck.cards.pop(-1)
@@ -22,10 +25,7 @@ class Hand:
         self.card_list_values.append(self.card_value)
         self.revalue_aces()
         self.total_value = sum(self.card_list_values)
-        print("You were dealt the following: ", self.card_list)
-        print(self.card_list_values)
-        print("The value of your hand is now ", self.total_value)
-        return self.value
+        return self.total_value
 
     def initial_ace_values(self):
             if sum(self.card_list_values_no_aces) <= 10:
@@ -58,5 +58,3 @@ class Hand:
 
 hand = Hand()
 hand.new_hand()
-while hand.total_value < 21:
-    hand.hit()
