@@ -3,18 +3,19 @@ from blackjack_hand import hand
 
 class Player:
     def __init__(self):
-        self.hand_value = 0
         self.player_decision = ""
+        self.new_game_input = ''
 
     def hit_or_stand(self):
-        print("The value of your hand is currently {}.".format(hand.total_value))
         self.player_decision = input("Would you like to (h)it or (s)tand? ").lower()
         if self.player_decision == 'h' or 'hit':
             hand.hit()
-            print("You were dealt the following: ", hand.card_list)
-            print(hand.card_list_values)
-            print("The value of your hand is now ", hand.total_value)
+            print("Your hand includes the following cards: {}".format(hand.card_list))
+            #print(hand.card_list_values)
+            print("The value of your hand is now {}.".format(hand.total_value))
         return self.player_decision
+
+
 
 
 class Dealer(Player):
@@ -27,5 +28,4 @@ class Dealer(Player):
             print("The dealer will stand.")
 
 player = Player()
-player.hit_or_stand()
 dealer = Dealer()

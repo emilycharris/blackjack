@@ -10,9 +10,10 @@ class Hand:
     def new_hand(self):
             self.hit()
             self.hit()
-            print("Your hand is as follows: ", hand.card_list)
-            print(hand.card_list_values)
-            #print("The value of your hand is now ", hand.total_value)
+            print("Your hand includes the following cards: {}".format(hand.card_list))
+            #print(hand.card_list_values)
+            print("The value of your hand is now {}.".format(hand.total_value))
+            return self.total_value
 
     def deal_card(self):
         self.face = game_deck.cards.pop(-1)
@@ -57,4 +58,4 @@ class Hand:
 
 
 hand = Hand()
-hand.new_hand()
+#hand.new_hand()
