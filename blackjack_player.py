@@ -14,14 +14,16 @@ class Player:
             player_hand.hit()
             print("Your hand includes the following cards: {}".format(player_hand.card_list))
             print("The value of your hand is now {}.".format(player_hand.total_value))
+            player.win_bust_hit()
         if self.player_decision == 's' or 'stand':
             dealer.hit_or_stand()
-        return self.player_decision
+            return False
 
     def win_bust_hit(self):
         if player_hand.total_value == 21:
             new_game_input = input("You Win!  Would you like to play again? (Y)es or (N)o. ").lower()
             if new_game_input == 'y' or new_game_input == 'yes':
+                print("\n\n\n")
                 self.game_loop()
             else:
                 sys.exit()
@@ -41,42 +43,44 @@ class Player:
         dealer_hand.new_hand()
         print("Your hand includes the following cards: {}.".format(player_hand.card_list))
         print("The value of your hand is {}.".format(player_hand.total_value))
-        print("The dealer's hand shows the {}.".format(dealer_hand.card_list[0]))
+        print("The dealer's hand shows the {}.".format(dealer_hand.card_list[1]))
         while True:
             self.win_bust_hit()
-        else:
-            dealer.hit_or_stand()
 
 class Dealer(Player):
     def hit_or_stand(self):
-        while True:
-            if dealer_hand.total_value < 17:
+        while dealer_hand.total_value < 17:
                 print("The dealer will hit.")
                 dealer_hand.hit()
-                #print("The value of the dealer's hand is {}.".format(dealer_hand.total_value))
+                print("The dealer shows {}.".format(dealer_hand.card_list[1:]))
         else:
             print("The dealer will stand.")
-            if player_hand.total_value > dealer_hand.total_value:
-                print("You Win! Your hand's value was {} "
-                        "and the dealer's was {}.".format(player_hand.total_value, dealer_hand.total_value))
-                new_game_input = input("Would you like to play again? (Y)es or (N)o. ").lower()
-                if new_game_input == 'y' or new_game_input == 'yes':
-                    self.game_loop()
-                else:
-                    sys.exit()
-            elif dealer_hand.total_value > player_hand.total_value:
-                new_game_input = input("You lost!  Would you like to play again? (Y)es or (N)o. ").lower()
-                if new_game_input == 'y' or new_game_input == 'yes':
-                    self.game_loop()
-                else:
-                    sys.exit()
+            if dealer_hand.total_value <= 21:
+                if player_hand.total_value > dealer_hand.total_value:
+                    print("You Win! Your hand's value was {} "
+                            "and the dealer's was {}.".format(player_hand.total_value, dealer_hand.total_value))
+                    new_game_input = input("Would you like to play again? (Y)es or (N)o. ").lower()
+                    if new_game_input == 'y' or new_game_input == 'yes':
+                        self.game_loop()
+                    else:
+                        sys.exit()
+                elif dealer_hand.total_value > player_hand.total_value:
+                    print("You lost!  The dealer's hand valued {} "
+                           "and yours valued {}.".format(dealer_hand.total_value, player_hand.total_value))
+                    new_game_input = input("Would you like to play again? (Y)es or (N)o. ").lower()
+                    if new_game_input == 'y' or new_game_input == 'yes':
+                        self.game_loop()
+                    else:
+                        sys.exit()
+            else: print("The dealer busted.  You win!")
 
 
 
 player = Player()
 dealer = Dealer()
 
-player.game_loop()
+#player.game_loop()
+dealer.hit_or_stand()
 
 
 
