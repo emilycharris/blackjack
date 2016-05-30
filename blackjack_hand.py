@@ -10,9 +10,9 @@ class Hand:
     def new_hand(self):
             self.hit()
             self.hit()
-            print("Your hand includes the following cards: {}".format(hand.card_list))
+            #print("Your hand includes the following cards: {}".format(hand.card_list))
             #print(hand.card_list_values)
-            print("The value of your hand is now {}.".format(hand.total_value))
+            #print("The value of your hand is {}.".format(hand.total_value))
             return self.total_value
 
     def deal_card(self):
@@ -55,6 +55,11 @@ class Hand:
                     self.card_list_values[self.i] = 1
         return self.card_list_values
 
+    def clear_hand(self):
+        self.total_value = 0
+        self.card_list = []
+        self.card_list_values = []
+        self.card_list_values_no_aces = []
 
 
 hand = Hand()
