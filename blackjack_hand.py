@@ -62,5 +62,6 @@ class Hand:
         self.card_list_values_no_aces = []
 
 
-hand = Hand()
+player_hand = Hand()
+dealer_hand = Hand()
 #hand.new_hand()
