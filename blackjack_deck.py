@@ -9,5 +9,8 @@ class Deck:
         self.cards = [(number + " of " + suit) for suit in self.suits for number in self.numbers]
         random.shuffle(self.cards)
 
+    def new_deck(self):
+        Deck.__init__(self)
+        return game_deck
+
 game_deck = Deck()
-#print(game_deck.cards)

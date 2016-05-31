@@ -1,5 +1,6 @@
 from blackjack_deck import game_deck
 
+
 class Hand:
     def __init__(self):
         self.total_value = 0
@@ -8,11 +9,9 @@ class Hand:
         self.card_list_values_no_aces = []
 
     def new_hand(self):
+            game_deck.new_deck()
             self.hit()
             self.hit()
-            #print("Your hand includes the following cards: {}".format(hand.card_list))
-            #print(hand.card_list_values)
-            #print("The value of your hand is {}.".format(hand.total_value))
             return self.total_value
 
     def deal_card(self):
@@ -64,4 +63,3 @@ class Hand:
 
 player_hand = Hand()
 dealer_hand = Hand()
-#hand.new_hand()
