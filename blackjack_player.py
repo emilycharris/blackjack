@@ -13,7 +13,7 @@ class Player:
         self.player_decision = ''
         self.player_decision = input("Would you like to (h)it or (s)tand? ").lower()
         if self.player_decision == 's' or self.player_decision == 'stand':
-            print("The player stands.  The dealer will take a turn.{}".format(dealer_hand.card_list))
+            print("The player stands.  The dealer will take a turn.")
             dealer.hit_or_stand()
         elif self.player_decision == 'h' or self.player_decision == 'hit':
             player_hand.hit()
